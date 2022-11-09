@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang = "pt-br">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta author = "Kay">
+        <title> Cadastro </title>
+        <link rel="shortcut icon" href="imagens/tenis.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/cadastro.css"/>
+        <link rel="stylesheet" type="text/css" href="css/banner.css"/>
+    </head>
+    <body>
+        <div class="gradient"></div>
+        <!-- <canvas class="orb-canvas"></canvas> -->
+        <div class = "buraco">
+            <h1> Cadastra-se </h1>
+            <!-- {!comentando o method="post" do formulario!} -->
+            <form method="post" action="#">
+                <!-- nome do cadastrado -->
+                <div class = "estiloinput">
+                    <input type = "name"  name = "" required = "" autocomplete="off"/>
+                    <label><span>Nome</span></label>
+                </div>
+
+                <!-- telefone do cadastrado -->
+                <div class = "estiloinput">
+                    <input type = "tel"  name = "" required = "" autocomplete="off"/>
+                    <label><span>Telefone</span></label>
+                </div>
+
+                <!-- email do cadastrado -->
+                <div class = "estiloinput">
+                    <input type = "text"  name = "" required = "" autocomplete="off"/>
+                    <label><span>E-mail</span></label>
+                </div>
+
+                <!-- senha do cadastrado -->
+                <div class="estiloinput">
+                    <input type = "password" name = "logpass" required = "" id="logpass" autocomplete="off" />
+                    <label><span>Crie uma senha</span></label>
+                </div>
+                <span></span>
+                {!teste do  botao -class =" overlay__btn overlay__btn--transparent"-!}
+                <button  class = "estilobotao">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <b>Entrar</b>
+                </button>
+                <p class="texto">
+                    Faça login
+                    <a href = "/Login"><b>Clique aqui para fazer login</b></a>
+                </p>
+            </form>
+        </div>
+        <script type="text/javascript" src="js/codificando.js"></script>
+        <script type="text/javascript" src="js/banner.js"></script>
+    </body>
+</html>

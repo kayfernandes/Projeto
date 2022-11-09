@@ -1,5 +1,5 @@
-import * as PIXI from "https://cdn.skypack.dev/pixi.js";
-import { KawaseBlurFilter } from "https://cdn.skypack.dev/@pixi/filter-kawase-blur";
+import * as PIXI from "https://cdn.skypack.dev/pixi.js@5.x";
+import { KawaseBlurFilter } from "https://cdn.skypack.dev/@pixi/filter-kawase-blur@3.2.0";
 import SimplexNoise from "https://cdn.skypack.dev/simplex-noise@3.0.0";
 import hsl from "https://cdn.skypack.dev/hsl-to-hex";
 import debounce from "https://cdn.skypack.dev/debounce";
@@ -33,7 +33,7 @@ class ColorPalette {
         this.saturation = 95;
         this.lightness = 50;
 
-        // definir uma cor base
+        // define a base color
         this.baseColor = hsl(this.hue, this.saturation, this.lightness);
         // definir uma cor complementar, a 30 graus de distância da base
         this.complimentaryColor1 = hsl(
@@ -57,7 +57,7 @@ class ColorPalette {
     }
 
     randomColor() {
-        //escolha uma cor aleatória
+        // escolha uma cor aleatória
         return this.colorChoices[~~random(0, this.colorChoices.length)].replace(
             "#",
             "0x"
@@ -91,13 +91,13 @@ class Orb {
         // quão grande é o orbe vs seu raio original (isso irá modular ao longo do tempo)
         this.scale = 1;
 
-        //qual a cor do orbe?
+        // qual a cor do orbe?
         this.fill = fill;
 
         // o raio original do orbe, definido em relação à altura da janela
         this.radius = random(window.innerHeight / 6, window.innerHeight / 3);
 
-        //pontos de partida em "tempo" para os valores aleatórios de ruído/auto-similares
+        // pontos de partida em "tempo" para os valores aleatórios de ruído/auto-similares
         this.xOff = random(0, 1000);
         this.yOff = random(0, 1000);
         // a rapidez com que os valores aleatórios de ruído/auto-similares percorrem o tempo
@@ -152,7 +152,7 @@ class Orb {
         // mapear scaleNoise (entre -1 e 1) para um valor de escala em algum lugar entre metade do tamanho original do orbe e 100% do tamanho original
         this.scale = map(scaleNoise, -1, 1, 0.5, 1);
 
-        //passo através do "tempo"
+        // passo através do "tempo"
         this.xOff += this.inc;
         this.yOff += this.inc;
     }
@@ -163,14 +163,14 @@ class Orb {
         this.graphics.y = this.y;
         this.graphics.scale.set(this.scale);
 
-        //limpar qualquer coisa atualmente desenhada para gráficos
+        // limpar qualquer coisa atualmente desenhada para gráficos
         this.graphics.clear();
 
         // diga aos gráficos para preencher quaisquer formas desenhadas depois disso com a cor de preenchimento do orbe
         this.graphics.beginFill(this.fill);
         // desenhe um círculo em { 0, 0 } com seu tamanho definido por this.radius
         this.graphics.drawCircle(0, 0, this.radius);
-        // deixe os gráficos saberem que não vamos preencher mais formas
+        //deixe os gráficos saberem que não vamos preencher mais formas
         this.graphics.endFill();
     }
 }
@@ -179,16 +179,16 @@ class Orb {
 const app = new PIXI.Application({
     // renderizar para <canvas class="orb-canvas"></canvas>
     view: document.querySelector(".orb-canvas"),
-    //ajuste automático do tamanho para caber na janela atual
+    // ajuste automático do tamanho para caber na janela atual
     resizeTo: window,
-    //fundo transparente, estaremos criando um fundo gradiente mais tarde usando CSS
+    // fundo transparente, estarei criando um fundo gradiente mais tarde usando CSS
     transparent: true
 });
 
+app.stage.filters = [new KawaseBlurFilter(30, 10, true)];
+
 // Criar paleta de cores
 const colorPalette = new ColorPalette();
-
-app.stage.filters = [new KawaseBlurFilter(30, 10, true)];
 
 // Criar orbes
 const orbs = [];
@@ -201,7 +201,7 @@ for (let i = 0; i < 10; i++) {
     orbs.push(orb);
 }
 
-// Animação
+// Animate!
 if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     app.ticker.add(() => {
         orbs.forEach((orb) => {

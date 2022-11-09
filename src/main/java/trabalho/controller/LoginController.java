@@ -9,16 +9,21 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 @Path("")
-public class IndexController {
+public class LoginController {
 
     @CheckedTemplate
-    public static class Templates {
-        public static native TemplateInstance index();
+    public static class templates {
+        public static native TemplateInstance Login();
+
     }
 
     @GET
-    @Path("")
+    @Path("Login")
     @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance getIndexHTML() {return Templates.index();}
-}
+    public TemplateInstance getLoginHTML() {
 
+        return templates.Login();
+    }
+
+
+}

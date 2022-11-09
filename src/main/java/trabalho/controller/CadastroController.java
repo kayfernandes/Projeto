@@ -9,16 +9,19 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 @Path("")
-public class IndexController {
+public class CadastroController {
 
     @CheckedTemplate
-    public static class Templates {
-        public static native TemplateInstance index();
+    public static class templates {
+        public static native TemplateInstance Cadastro();
     }
 
     @GET
-    @Path("")
+    @Path("Cadastro")
     @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance getIndexHTML() {return Templates.index();}
-}
+    public TemplateInstance getCadastroHTML() {
 
+        return templates.Cadastro();
+    }
+
+}
