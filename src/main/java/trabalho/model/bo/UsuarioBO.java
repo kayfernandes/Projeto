@@ -1,38 +1,38 @@
 //package trabalho.model.bo;
 //
-//import trabalho.model.dao.impl.UsuarioDAO;
-//import trabalho.model.dto.UsuarioDTO;
-//import trabalho.model.entity.Usuario;
+//import br.edu.ifg.luziania.tiii.model.dao.impl.PessoaDAO;
+//import br.edu.ifg.luziania.tiii.model.dto.UsuarioDTO;
+//import br.edu.ifg.luziania.tiii.model.dto.PessoaFormDTO;
+//import br.edu.ifg.luziania.tiii.model.entity.Pessoa;
+//
 //import javax.enterprise.context.Dependent;
 //import javax.inject.Inject;
-//import java.util.List;
 //
 //@Dependent
-//public class UsuarioBO {
+//public class PessoaBO {
 //
 //    @Inject
-//    UsuarioDAO dao;
+//    PessoaDAO pessoaDAO;
 //
-//    private boolean validador(UsuarioDTO dto){
-//        return !(dto.getNome().isBlank() || dto.getEmail().isBlank() || dto.getSenha().isBlank());
+//    public PessoaFormDTO getFormData() {
+//        PessoaFormDTO dto = new PessoaFormDTO();
+//        dto.getSexos().add("Masculino");
+//        dto.getSexos().add("Feminino");
+//        return dto;
 //    }
 //
+//    public Boolean save(UsuarioDTO dto) {
+//        pessoaDAO.insert(new Pessoa(dto));
+//        pessoaDAO.save(dto);
 //
-//    public Object save(UsuarioDTO dto) {
-//        if (validador(dto)){
-//            dao.insert(new Usuario(dto));
+//
+//        boolean a = true;
+//
+//        if(a){
+//
 //        }
-//        List<Usuario> usuarios = dao.getAll();
-//        usuarios.size();
-//        return null;
+//
+//
+//        return true;
 //    }
-//
-////        public UsuarioFormDTO getFormData() {
-////            UsuarioFormDTO dto = new UsuarioFormDTO();
-////            dto.getSexos().add("Masculino");
-////           dto.getSexos().add("Feminino");
-////            return dto;
-////        }
-//
 //}
-//
